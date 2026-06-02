@@ -15,6 +15,12 @@ export class UserRepository {
     });
   }
 
+  async findByEmail(email: string) {
+    return this.userRepo.findOne({
+      where: { email },
+    });
+  }
+
   async createStudent(data: Partial<User>) {
     const platformAccounts = new PlatformAccounts();
     const newStudent = this.userRepo.create({

@@ -13,6 +13,10 @@ dotenv.config();
 export const AppDataSource = new DataSource({
   type: "postgres",
   url: process.env.DATABASE_URL || "postgres://postgres:postgres@localhost:5432/postgres",
+  ssl: process.env.DB_SSL === "true" ? { rejectUnauthorized: false } : false,
+  extra: {
+    ssl: process.env.DB_SSL === "true" ? { rejectUnauthorized: false } : false,
+  },
   synchronize: true, // Auto-sync for dev environment
   logging: false,
   entities: [User, PlatformAccounts, Problem, SolvedProblem, Contest, TimelineEvent],

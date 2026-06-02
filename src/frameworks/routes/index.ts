@@ -4,8 +4,11 @@ import problemRoutes from "./problem.routes";
 import contestRoutes from "./contest.routes";
 import leaderboardRoutes from "./leaderboard.routes";
 
+import authRoutes from "./auth.routes";
+
 const router = Router();
 
+router.use("/auth", authRoutes);
 router.use("/students", studentRoutes);
 router.use("/problems", problemRoutes);
 router.use("/contests", contestRoutes);
