@@ -14,6 +14,11 @@ export class ProblemRepository {
     return this.problemRepo.findOne({ where: { id } });
   }
 
+  async create(data: Partial<Problem>) {
+    const problem = this.problemRepo.create(data);
+    return this.problemRepo.save(problem);
+  }
+
   async hasUserSolvedProblem(userId: string, problemId: string) {
     const existing = await this.solvedProblemRepo.findOne({ where: { userId, problemId } });
     return !!existing;

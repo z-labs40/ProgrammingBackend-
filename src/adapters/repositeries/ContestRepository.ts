@@ -14,4 +14,9 @@ export class ContestRepository {
       order: { date: "DESC" },
     });
   }
+
+  async create(data: Partial<Contest>) {
+    const contest = this.contestRepo.create(data);
+    return this.contestRepo.save(contest);
+  }
 }

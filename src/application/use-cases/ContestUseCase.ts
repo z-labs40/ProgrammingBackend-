@@ -11,4 +11,8 @@ export class ContestUseCase {
   async getAllContests(type?: string) {
     return this.contestRepository.findAll(type as ContestType);
   }
+
+  async createContest(data: any) {
+    return this.contestRepository.create(data);
+  }
 }

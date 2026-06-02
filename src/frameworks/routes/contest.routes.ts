@@ -5,5 +5,6 @@ const router = Router();
 const contestController = new ContestController();
 
 router.get("/", contestController.getAllContests);
+router.post("/", contestController.createContest);
 
 export default router;

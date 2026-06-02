@@ -18,6 +18,24 @@ export class ProblemController {
     }
   };
 
+  createProblem = async (req: Request, res: Response) => {
+    try {
+      const { title, url, link, difficulty, platform, points } = req.body;
+      const sanitizedData = {
+        title,
+        link: link || url,
+        difficulty: difficulty ? difficulty.toUpperCase() : "EASY",
+        platform: platform ? platform.toUpperCase() : "LEETCODE",
+        points: points || 0
+      };
+      const problem = await this.problemUseCase.createProblem(sanitizedData);
+      res.status(201).json(problem);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  };
+
   solveProblem = async (req: Request, res: Response) => {
     try {
       const { userId, problemId } = req.body;

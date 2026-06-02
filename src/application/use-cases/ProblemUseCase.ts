@@ -14,6 +14,10 @@ export class ProblemUseCase {
     return this.problemRepository.findAll();
   }
 
+  async createProblem(data: any) {
+    return this.problemRepository.create(data);
+  }
+
   async solveProblem(userId: string, problemId: string) {
     const problem = await this.problemRepository.findById(problemId);
     if (!problem) {
