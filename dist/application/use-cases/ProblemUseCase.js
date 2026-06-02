@@ -1,11 +1,14 @@
-import { ProblemRepository } from "../../adapters/repositeries/ProblemRepository";
-import { UserRepository } from "../../adapters/repositeries/UserRepository";
-export class ProblemUseCase {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProblemUseCase = void 0;
+const ProblemRepository_1 = require("../../adapters/repositeries/ProblemRepository");
+const UserRepository_1 = require("../../adapters/repositeries/UserRepository");
+class ProblemUseCase {
     problemRepository;
     userRepository;
     constructor() {
-        this.problemRepository = new ProblemRepository();
-        this.userRepository = new UserRepository();
+        this.problemRepository = new ProblemRepository_1.ProblemRepository();
+        this.userRepository = new UserRepository_1.UserRepository();
     }
     async getAllProblems() {
         return this.problemRepository.findAll();
@@ -29,3 +32,4 @@ export class ProblemUseCase {
         return { success: true, userScore: updatedUser?.score };
     }
 }
+exports.ProblemUseCase = ProblemUseCase;

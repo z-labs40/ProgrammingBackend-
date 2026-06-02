@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only -r reflect-metadata src/frameworks/server.ts",
     "build": "tsc",
-    "start": "node dist/frameworks/server.js"
+    "start": "node dist/frameworks/server.js",
+    "seed": "ts-node -r reflect-metadata src/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -30,7 +31,8 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.9.1",
     "@types/winston": "^2.4.4",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^6.0.3"
+    "typescript": "^5.4.5"
   }
 }

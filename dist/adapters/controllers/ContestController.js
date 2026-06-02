@@ -1,8 +1,11 @@
-import { ContestUseCase } from "../../application/use-cases/ContestUseCase";
-export class ContestController {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ContestController = void 0;
+const ContestUseCase_1 = require("../../application/use-cases/ContestUseCase");
+class ContestController {
     contestUseCase;
     constructor() {
-        this.contestUseCase = new ContestUseCase();
+        this.contestUseCase = new ContestUseCase_1.ContestUseCase();
     }
     getAllContests = async (req, res) => {
         try {
@@ -16,3 +19,4 @@ export class ContestController {
         }
     };
 }
+exports.ContestController = ContestController;

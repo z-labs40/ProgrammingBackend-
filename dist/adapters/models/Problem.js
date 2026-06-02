@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,20 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { SolvedProblem } from "./SolvedProblem";
-export var Difficulty;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Problem = exports.Platform = exports.Difficulty = void 0;
+const typeorm_1 = require("typeorm");
+const SolvedProblem_1 = require("./SolvedProblem");
+var Difficulty;
 (function (Difficulty) {
     Difficulty["EASY"] = "EASY";
     Difficulty["MEDIUM"] = "MEDIUM";
     Difficulty["HARD"] = "HARD";
-})(Difficulty || (Difficulty = {}));
-export var Platform;
+})(Difficulty || (exports.Difficulty = Difficulty = {}));
+var Platform;
 (function (Platform) {
     Platform["LEETCODE"] = "LEETCODE";
     Platform["CODEFORCES"] = "CODEFORCES";
     Platform["HACKERRANK"] = "HACKERRANK";
-})(Platform || (Platform = {}));
+})(Platform || (exports.Platform = Platform = {}));
 let Problem = class Problem {
     id;
     title;
@@ -30,35 +33,35 @@ let Problem = class Problem {
     link;
     solvedBy;
 };
+exports.Problem = Problem;
 __decorate([
-    PrimaryGeneratedColumn("uuid"),
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], Problem.prototype, "id", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Problem.prototype, "title", void 0);
 __decorate([
-    Column({ type: "enum", enum: Difficulty }),
+    (0, typeorm_1.Column)({ type: "enum", enum: Difficulty }),
     __metadata("design:type", String)
 ], Problem.prototype, "difficulty", void 0);
 __decorate([
-    Column({ type: "enum", enum: Platform }),
+    (0, typeorm_1.Column)({ type: "enum", enum: Platform }),
     __metadata("design:type", String)
 ], Problem.prototype, "platform", void 0);
 __decorate([
-    Column({ default: 0 }),
+    (0, typeorm_1.Column)({ default: 0 }),
     __metadata("design:type", Number)
 ], Problem.prototype, "points", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Problem.prototype, "link", void 0);
 __decorate([
-    OneToMany(() => SolvedProblem, solved => solved.problem),
+    (0, typeorm_1.OneToMany)(() => SolvedProblem_1.SolvedProblem, solved => solved.problem),
     __metadata("design:type", Array)
 ], Problem.prototype, "solvedBy", void 0);
-Problem = __decorate([
-    Entity()
+exports.Problem = Problem = __decorate([
+    (0, typeorm_1.Entity)()
 ], Problem);
-export { Problem };

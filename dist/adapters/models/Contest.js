@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,12 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-export var ContestType;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Contest = exports.ContestType = void 0;
+const typeorm_1 = require("typeorm");
+var ContestType;
 (function (ContestType) {
     ContestType["UPCOMING"] = "UPCOMING";
     ContestType["RECENT"] = "RECENT";
-})(ContestType || (ContestType = {}));
+})(ContestType || (exports.ContestType = ContestType = {}));
 let Contest = class Contest {
     id;
     name;
@@ -22,35 +25,35 @@ let Contest = class Contest {
     registeredCount;
     link;
 };
+exports.Contest = Contest;
 __decorate([
-    PrimaryGeneratedColumn("uuid"),
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], Contest.prototype, "id", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Contest.prototype, "name", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Contest.prototype, "platform", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Date)
 ], Contest.prototype, "date", void 0);
 __decorate([
-    Column({ type: "enum", enum: ContestType }),
+    (0, typeorm_1.Column)({ type: "enum", enum: ContestType }),
     __metadata("design:type", String)
 ], Contest.prototype, "type", void 0);
 __decorate([
-    Column({ default: 0 }),
+    (0, typeorm_1.Column)({ default: 0 }),
     __metadata("design:type", Number)
 ], Contest.prototype, "registeredCount", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Contest.prototype, "link", void 0);
-Contest = __decorate([
-    Entity()
+exports.Contest = Contest = __decorate([
+    (0, typeorm_1.Entity)()
 ], Contest);
-export { Contest };

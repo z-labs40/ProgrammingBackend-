@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,8 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
-import { User } from "./User";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PlatformAccounts = void 0;
+const typeorm_1 = require("typeorm");
+const User_1 = require("./User");
 let PlatformAccounts = class PlatformAccounts {
     id;
     leetcode;
@@ -17,32 +20,32 @@ let PlatformAccounts = class PlatformAccounts {
     user;
     userId;
 };
+exports.PlatformAccounts = PlatformAccounts;
 __decorate([
-    PrimaryGeneratedColumn("uuid"),
+    (0, typeorm_1.PrimaryGeneratedColumn)("uuid"),
     __metadata("design:type", String)
 ], PlatformAccounts.prototype, "id", void 0);
 __decorate([
-    Column({ nullable: true }),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], PlatformAccounts.prototype, "leetcode", void 0);
 __decorate([
-    Column({ nullable: true }),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], PlatformAccounts.prototype, "codeforces", void 0);
 __decorate([
-    Column({ nullable: true }),
+    (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], PlatformAccounts.prototype, "hackerrank", void 0);
 __decorate([
-    OneToOne(() => User, user => user.platformAccounts),
-    JoinColumn({ name: "userId" }),
-    __metadata("design:type", User)
+    (0, typeorm_1.OneToOne)(() => User_1.User, user => user.platformAccounts),
+    (0, typeorm_1.JoinColumn)({ name: "userId" }),
+    __metadata("design:type", User_1.User)
 ], PlatformAccounts.prototype, "user", void 0);
 __decorate([
-    Column("uuid"),
+    (0, typeorm_1.Column)("uuid"),
     __metadata("design:type", String)
 ], PlatformAccounts.prototype, "userId", void 0);
-PlatformAccounts = __decorate([
-    Entity()
+exports.PlatformAccounts = PlatformAccounts = __decorate([
+    (0, typeorm_1.Entity)()
 ], PlatformAccounts);
-export { PlatformAccounts };

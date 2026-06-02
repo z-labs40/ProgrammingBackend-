@@ -1,8 +1,11 @@
-import { StudentUseCase } from "../../application/use-cases/StudentUseCase";
-export class StudentController {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.StudentController = void 0;
+const StudentUseCase_1 = require("../../application/use-cases/StudentUseCase");
+class StudentController {
     studentUseCase;
     constructor() {
-        this.studentUseCase = new StudentUseCase();
+        this.studentUseCase = new StudentUseCase_1.StudentUseCase();
     }
     getAllStudents = async (req, res) => {
         try {
@@ -53,3 +56,4 @@ export class StudentController {
         }
     };
 }
+exports.StudentController = StudentController;

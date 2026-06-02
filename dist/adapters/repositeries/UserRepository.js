@@ -1,29 +1,32 @@
-import { AppDataSource } from "../../infrastructure/database";
-import { User, UserRole } from "../models/User";
-import { PlatformAccounts } from "../models/PlatformAccounts";
-import { TimelineEvent } from "../models/TimelineEvent";
-export class UserRepository {
-    userRepo = AppDataSource.getRepository(User);
-    platformRepo = AppDataSource.getRepository(PlatformAccounts);
-    timelineRepo = AppDataSource.getRepository(TimelineEvent);
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserRepository = void 0;
+const database_1 = require("../../infrastructure/database");
+const User_1 = require("../models/User");
+const PlatformAccounts_1 = require("../models/PlatformAccounts");
+const TimelineEvent_1 = require("../models/TimelineEvent");
+class UserRepository {
+    userRepo = database_1.AppDataSource.getRepository(User_1.User);
+    platformRepo = database_1.AppDataSource.getRepository(PlatformAccounts_1.PlatformAccounts);
+    timelineRepo = database_1.AppDataSource.getRepository(TimelineEvent_1.TimelineEvent);
     async findAllStudents() {
         return this.userRepo.find({
-            where: { role: UserRole.STUDENT },
+            where: { role: User_1.UserRole.STUDENT },
             relations: { platformAccounts: true },
         });
     }
     async createStudent(data) {
-        const platformAccounts = new PlatformAccounts();
+        const platformAccounts = new PlatformAccounts_1.PlatformAccounts();
         const newStudent = this.userRepo.create({
             ...data,
-            role: UserRole.STUDENT,
+            role: User_1.UserRole.STUDENT,
             platformAccounts,
         });
         return this.userRepo.save(newStudent);
     }
     async findStudentById(id) {
         return this.userRepo.findOne({
-            where: { id, role: UserRole.STUDENT },
+            where: { id, role: User_1.UserRole.STUDENT },
             relations: { platformAccounts: true, timelineEvents: true, solvedProblems: { problem: true } },
         });
     }
@@ -42,7 +45,7 @@ export class UserRepository {
     }
     async getLeaderboard() {
         const students = await this.userRepo.find({
-            where: { role: UserRole.STUDENT },
+            where: { role: User_1.UserRole.STUDENT },
             relations: { platformAccounts: true },
             order: { score: "DESC" },
         });
@@ -63,3 +66,4 @@ export class UserRepository {
         }
     }
 }
+exports.UserRepository = UserRepository;

@@ -1,8 +1,11 @@
-import { UserRepository } from "../../adapters/repositeries/UserRepository";
-export class StudentUseCase {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.StudentUseCase = void 0;
+const UserRepository_1 = require("../../adapters/repositeries/UserRepository");
+class StudentUseCase {
     userRepository;
     constructor() {
-        this.userRepository = new UserRepository();
+        this.userRepository = new UserRepository_1.UserRepository();
     }
     async getAllStudents() {
         return this.userRepository.findAllStudents();
@@ -22,3 +25,4 @@ export class StudentUseCase {
         return this.userRepository.getLeaderboard();
     }
 }
+exports.StudentUseCase = StudentUseCase;

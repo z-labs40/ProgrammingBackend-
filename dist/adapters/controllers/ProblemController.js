@@ -1,8 +1,11 @@
-import { ProblemUseCase } from "../../application/use-cases/ProblemUseCase";
-export class ProblemController {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProblemController = void 0;
+const ProblemUseCase_1 = require("../../application/use-cases/ProblemUseCase");
+class ProblemController {
     problemUseCase;
     constructor() {
-        this.problemUseCase = new ProblemUseCase();
+        this.problemUseCase = new ProblemUseCase_1.ProblemUseCase();
     }
     getAllProblems = async (req, res) => {
         try {
@@ -32,3 +35,4 @@ export class ProblemController {
         }
     };
 }
+exports.ProblemController = ProblemController;

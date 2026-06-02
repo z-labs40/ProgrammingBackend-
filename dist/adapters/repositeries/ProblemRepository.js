@@ -1,9 +1,12 @@
-import { AppDataSource } from "../../infrastructure/database";
-import { Problem } from "../models/Problem";
-import { SolvedProblem } from "../models/SolvedProblem";
-export class ProblemRepository {
-    problemRepo = AppDataSource.getRepository(Problem);
-    solvedProblemRepo = AppDataSource.getRepository(SolvedProblem);
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProblemRepository = void 0;
+const database_1 = require("../../infrastructure/database");
+const Problem_1 = require("../models/Problem");
+const SolvedProblem_1 = require("../models/SolvedProblem");
+class ProblemRepository {
+    problemRepo = database_1.AppDataSource.getRepository(Problem_1.Problem);
+    solvedProblemRepo = database_1.AppDataSource.getRepository(SolvedProblem_1.SolvedProblem);
     async findAll() {
         return this.problemRepo.find();
     }
@@ -19,3 +22,4 @@ export class ProblemRepository {
         return this.solvedProblemRepo.save(solved);
     }
 }
+exports.ProblemRepository = ProblemRepository;

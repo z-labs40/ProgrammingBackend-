@@ -1,7 +1,9 @@
-import { Router } from "express";
-import { ProblemController } from "../../adapters/controllers/ProblemController";
-const router = Router();
-const problemController = new ProblemController();
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const ProblemController_1 = require("../../adapters/controllers/ProblemController");
+const router = (0, express_1.Router)();
+const problemController = new ProblemController_1.ProblemController();
 router.get("/", problemController.getAllProblems);
 router.post("/solve", problemController.solveProblem);
-export default router;
+exports.default = router;
